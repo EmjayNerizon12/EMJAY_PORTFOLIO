@@ -360,6 +360,37 @@
 	        <div id="githubError" class="text-danger mt-3 d-none" role="status"></div>
 	      </div>
 
+	      <div class="card-surface p-4 mb-4 reveal">
+	        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+	          <div>
+	            <div class="text-muted small">GitHub</div>
+	            <div class="h5 mb-0">Contributions</div>
+	          </div>
+	          <div id="githubContribYear" class="text-muted small"></div>
+	        </div>
+        <div class="github-contrib-chart" aria-live="polite">
+          <div class="github-contrib-y" aria-hidden="true">
+            <span>Mon</span>
+            <span>Wed</span>
+            <span>Fri</span>
+          </div>
+          <div class="github-contrib-main">
+            <div id="githubContribMonths" class="github-contrib-months" aria-hidden="true"></div>
+            <div id="githubContributions" class="github-contrib-grid"></div>
+          </div>
+        </div>
+	        <div id="githubContribError" class="text-danger mt-3 d-none" role="status"></div>
+	        <div class="github-contrib-legend mt-3" aria-hidden="true">
+	          <span class="text-muted small">Less</span>
+	          <div class="legend-swatch" data-level="0"></div>
+	          <div class="legend-swatch" data-level="1"></div>
+	          <div class="legend-swatch" data-level="2"></div>
+	          <div class="legend-swatch" data-level="3"></div>
+	          <div class="legend-swatch" data-level="4"></div>
+	          <span class="text-muted small">More</span>
+	        </div>
+	      </div>
+
 	      <div id="githubProjects" class="row g-4" aria-live="polite"></div>
 	    </div>
 	  </section>
@@ -371,7 +402,7 @@
       <div class="section-subtitle">Languages & technologies I use</div>
     </div>
 
-    <div class="row g-4 justify-content-center">
+    <div class="row g-4 justify-content-center skills-grid">
       <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
         <div class="skill-card text-center p-3 h-100">
           <img src="./images/skills/php.png" class="mx-auto mb-3" alt="PHP logo" style="height:60px;">
@@ -428,6 +459,54 @@
           <h3 class="h6 fw-semibold mb-0">MySQL</h3>
         </div>
       </div>
+
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+        <div class="skill-card text-center p-3 h-100">
+          <img src="./images/skills/postgres.png" class="mx-auto mb-3" alt="PostgreSQL logo"
+            style="width:60px; height:60px;">
+          <h3 class="h6 fw-semibold mb-0">PostgreSQL</h3>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+        <div class="skill-card text-center p-3 h-100">
+          <img src="./images/skills/sqlite.png" class="mx-auto mb-3" alt="SQLite logo"
+            style="width:60px; height:60px;">
+          <h3 class="h6 fw-semibold mb-0">SQLite</h3>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+        <div class="skill-card text-center p-3 h-100">
+          <img src="./images/skills/node.png" class="mx-auto mb-3" alt="Node.js logo"
+            style="width:60px; height:60px;">
+          <h3 class="h6 fw-semibold mb-0">Node.js</h3>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+        <div class="skill-card text-center p-3 h-100">
+          <img src="./images/skills/python.png" class="mx-auto mb-3" alt="Python logo"
+            style="width:60px; height:60px;">
+          <h3 class="h6 fw-semibold mb-0">Python</h3>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+        <div class="skill-card text-center p-3 h-100">
+          <img src="./images/skills/git.png" class="mx-auto mb-3" alt="Git logo"
+            style="width:60px; height:60px;">
+          <h3 class="h6 fw-semibold mb-0">Git</h3>
+        </div>
+      </div>
+
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 reveal">
+        <div class="skill-card text-center p-3 h-100">
+          <img src="./images/skills/github.png" class="mx-auto mb-3" alt="GitHub logo"
+            style="width:60px; height:60px;">
+          <h3 class="h6 fw-semibold mb-0">GitHub</h3>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -441,25 +520,64 @@
     <div class="row g-4">
       <div class="col-md-4 reveal">
         <div class="card-surface hover-lift p-4 h-100">
-          <h3 class="h6 fw-semibold mb-1">Email</h3>
-          <div class="text-muted mb-3">your-email@example.com</div>
-          <div class="text-muted">Replace with your real email.</div>
+          <div class="contact-header mb-2">
+            <span class="contact-icon" aria-hidden="true">
+              <img src="./images/icon/gmal.png" alt="">
+            </span>
+            <h3 class="h6 fw-semibold mb-0">Email</h3>
+          </div>
+          <a class="contact-link text-muted mb-3 d-inline-block" href="mailto:emjaynerizon61@gmail.com">
+            emjaynerizon61@gmail.com
+          </a>
+          <div class="text-muted">Open to collaborations and freelance work.</div>
         </div>
       </div>
 
       <div class="col-md-4 reveal">
         <div class="card-surface hover-lift p-4 h-100">
-          <h3 class="h6 fw-semibold mb-1">GitHub</h3>
-          <div class="text-muted mb-3">github.com/your-username</div>
-          <div class="text-muted">Replace with your GitHub link.</div>
+          <div class="contact-header mb-2">
+            <span class="contact-icon" aria-hidden="true">
+              <img src="./images/icon/github.png" alt="">
+            </span>
+            <h3 class="h6 fw-semibold mb-0">GitHub</h3>
+          </div>
+          <a class="contact-link text-muted mb-3 d-inline-block" href="https://github.com/EmjayNerizon12"
+            target="_blank" rel="noopener noreferrer">
+            github.com/EmjayNerizon12
+          </a>
+          <div class="text-muted">Check out my latest repositories and projects.</div>
         </div>
       </div>
 
       <div class="col-md-4 reveal">
         <div class="card-surface hover-lift p-4 h-100">
-          <h3 class="h6 fw-semibold mb-1">LinkedIn</h3>
-          <div class="text-muted mb-3">linkedin.com/in/your-name</div>
-          <div class="text-muted">Replace with your LinkedIn link.</div>
+          <div class="contact-header mb-2">
+            <span class="contact-icon" aria-hidden="true">
+              <img src="./images/icon/linked_in.png" alt="">
+            </span>
+            <h3 class="h6 fw-semibold mb-0">LinkedIn</h3>
+          </div>
+          <a class="contact-link text-muted mb-3 d-inline-block" href="https://www.linkedin.com/in/emjay-nerizon-1ba274376?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            target="_blank" rel="noopener noreferrer">
+            Emjay Nerizon
+          </a>
+          <div class="text-muted">Reach me here or via emjaynerizon61@gmail.com.</div>
+        </div>
+      </div>
+
+      <div class="col-md-4 reveal">
+        <div class="card-surface hover-lift p-4 h-100">
+          <div class="contact-header mb-2">
+            <span class="contact-icon" aria-hidden="true">
+              <img src="./images/icon/facebook.png" alt="">
+            </span>
+            <h3 class="h6 fw-semibold mb-0">Facebook</h3>
+          </div>
+          <a class="contact-link text-muted mb-3 d-inline-block" href="https://www.facebook.com/emjay.nerizon.9/"
+            target="_blank" rel="noopener noreferrer">
+            facebook.com/emjay.nerizon.9
+          </a>
+          <div class="text-muted">Message me here for quick updates.</div>
         </div>
       </div>
     </div>

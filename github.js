@@ -10,6 +10,10 @@
   const profileLinkEl = document.getElementById("githubProfileLink");
   const reposContainer = document.getElementById("githubProjects");
   const errorEl = document.getElementById("githubError");
+  const contribContainer = document.getElementById("githubContributions");
+  const contribYearEl = document.getElementById("githubContribYear");
+  const contribErrorEl = document.getElementById("githubContribError");
+  const contribMonthsEl = document.getElementById("githubContribMonths");
 
   if (!reposContainer) return;
 
@@ -23,6 +27,18 @@
     if (!errorEl) return;
     errorEl.textContent = "";
     errorEl.classList.add("d-none");
+  }
+
+  function showContribError(message) {
+    if (!contribErrorEl) return;
+    contribErrorEl.textContent = message;
+    contribErrorEl.classList.remove("d-none");
+  }
+
+  function clearContribError() {
+    if (!contribErrorEl) return;
+    contribErrorEl.textContent = "";
+    contribErrorEl.classList.add("d-none");
   }
 
   function renderRepoCard(repo) {
@@ -80,6 +96,93 @@
     return col;
   }
 
+  function colorFromCount(count) {
+    if (count >= 15) return "#216e39";
+    if (count >= 10) return "#30a14e";
+    if (count >= 5) return "#40c463";
+    if (count >= 1) return "#9be9a8";
+    return "#ebedf0";
+  }
+
+  function normalizeContributions(contributions) {
+    const sorted = [...contributions].sort((a, b) => a.date.localeCompare(b.date));
+    const weeks = [];
+    let currentWeek = new Array(7).fill(null);
+
+    for (const day of sorted) {
+      const date = new Date(`${day.date}T00:00:00`);
+      const dow = date.getDay(); // 0=Sun ... 6=Sat
+      if (dow === 0 && currentWeek.some(Boolean)) {
+        weeks.push(currentWeek);
+        currentWeek = new Array(7).fill(null);
+      }
+      currentWeek[dow] = day;
+    }
+
+    if (currentWeek.some(Boolean)) {
+      weeks.push(currentWeek);
+    }
+
+    return { weeks, sorted };
+  }
+
+  function renderMonths(weeks) {
+    if (!contribMonthsEl) return;
+    contribMonthsEl.innerHTML = "";
+
+    const monthLabels = [];
+    let lastMonth = null;
+
+    weeks.forEach((week, index) => {
+      const firstDay = week.find(Boolean);
+      if (!firstDay) return;
+      const date = new Date(`${firstDay.date}T00:00:00`);
+      const month = date.getMonth();
+      const monthName = date.toLocaleString("en-US", { month: "short" });
+
+      if (month !== lastMonth) {
+        monthLabels.push({ index, label: monthName });
+        lastMonth = month;
+      }
+    });
+
+    for (const item of monthLabels) {
+      const label = document.createElement("span");
+      label.textContent = item.label;
+      label.style.gridColumnStart = String(item.index + 1);
+      contribMonthsEl.appendChild(label);
+    }
+
+    contribMonthsEl.style.gridTemplateColumns = `repeat(${weeks.length}, minmax(0, 1fr))`;
+  }
+
+  function renderContributions(contributions) {
+    if (!contribContainer) return;
+    contribContainer.innerHTML = "";
+
+    const fragment = document.createDocumentFragment();
+    const { weeks } = normalizeContributions(contributions);
+
+    renderMonths(weeks);
+    contribContainer.style.gridTemplateColumns = `repeat(${weeks.length}, minmax(0, 1fr))`;
+
+    for (const week of weeks) {
+      for (let i = 0; i < 7; i += 1) {
+        const day = week[i];
+        const cell = document.createElement("div");
+        cell.className = "github-contrib-day";
+        if (day) {
+          cell.style.backgroundColor = day.color || colorFromCount(day.count || 0);
+          const count = day.count ?? 0;
+          cell.title = `${day.date}: ${count} contribution${count === 1 ? "" : "s"}`;
+        }
+        fragment.appendChild(cell);
+      }
+    }
+
+    contribContainer.appendChild(fragment);
+  }
+
   async function fetchJson(url) {
     const res = await fetch(url, { headers: { Accept: "application/vnd.github+json" } });
     if (!res.ok) {
@@ -116,6 +219,42 @@
 
       const reveals = Array.from(reposContainer.querySelectorAll(".reveal"));
       for (const el of reveals) el.classList.add("is-visible");
+
+      if (contribContainer) {
+        clearContribError();
+        try {
+          const contribRes = await fetchJson(
+            `https://github-contributions-api.jogruber.de/v4/${encodeURIComponent(username)}?y=last`
+          );
+
+          if (Array.isArray(contribRes.contributions)) {
+            renderContributions(contribRes.contributions);
+          }
+
+          const yearLabel =
+            contribRes.years && contribRes.years.length
+              ? `Last 12 months (${contribRes.years[contribRes.years.length - 1]})`
+              : "Last 12 months";
+
+          if (contribYearEl) contribYearEl.textContent = yearLabel;
+        } catch (err) {
+          try {
+            const fallbackRes = await fetchJson(
+              `https://github-contributions-api.deno.dev/${encodeURIComponent(username)}`
+            );
+
+            if (Array.isArray(fallbackRes.contributions)) {
+              renderContributions(fallbackRes.contributions);
+            }
+
+            if (contribYearEl) contribYearEl.textContent = "Last 12 months";
+          } catch (fallbackErr) {
+            showContribError(
+              "Unable to load GitHub contributions right now. (Tip: public APIs can have rate limits.)"
+            );
+          }
+        }
+      }
     } catch (err) {
       showError(
         "Unable to load GitHub repositories right now. (Tip: GitHub API has rate limits, so try again later.)"
