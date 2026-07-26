@@ -192,4 +192,60 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 1; i <= 4; i++) {
         initProjCarousel(i);
     }
+
+    // ==========================================
+    // CERTIFICATIONS TAB SWITCHER
+    // ==========================================
+    const certTabs = document.querySelectorAll('.cert-tab');
+    certTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            certTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const target = tab.dataset.tab;
+            document.querySelectorAll('.cert-panel').forEach(panel => panel.classList.add('hidden'));
+            const activePanel = document.getElementById(`panel-${target}`);
+            if (activePanel) activePanel.classList.remove('hidden');
+        });
+    });
+
+    // ==========================================
+    // CERT / WEBINAR CAROUSEL FACTORY
+    // ==========================================
+    const initCertCarousel = (trackId, prevId, nextId, dotsId, currentSpanId) => {
+        const track = document.getElementById(trackId);
+        if (!track) return;
+        const slides = track.querySelectorAll('.cert-slide');
+        const dotsContainer = document.getElementById(dotsId);
+        const currentSpan = document.getElementById(currentSpanId);
+        if (!slides.length || !dotsContainer) return;
+        let idx = 0;
+
+        slides.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.classList.add('cert-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goTo(i));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = dotsContainer.querySelectorAll('.cert-dot');
+
+        function update() {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[idx].classList.add('active');
+            dots.forEach(d => d.classList.remove('active'));
+            dots[idx].classList.add('active');
+            if (currentSpan) currentSpan.textContent = idx + 1;
+        }
+
+        function goTo(i) { idx = i; update(); }
+
+        const prevBtn = document.getElementById(prevId);
+        const nextBtn = document.getElementById(nextId);
+        if (prevBtn) prevBtn.addEventListener('click', () => { idx = (idx - 1 + slides.length) % slides.length; update(); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { idx = (idx + 1) % slides.length; update(); });
+    };
+
+    initCertCarousel('certTrack', 'certPrev', 'certNext', 'certDots', 'certCounterCurrent');
+    initCertCarousel('webinarTrack', 'webinarPrev', 'webinarNext', 'webinarDots', 'webinarCounterCurrent');
 });
