@@ -29,9 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeBtn = document.getElementById('themeBtn');
     const body = document.body;
 
-    // Load saved theme preference
+    // Load saved theme preference — default light
     if (localStorage.getItem('theme') === 'dark') {
         body.classList.add('dark');
+    } else {
+        body.classList.remove('dark');
     }
 
     if (themeBtn) {

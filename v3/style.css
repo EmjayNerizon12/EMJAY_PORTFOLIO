@@ -22,8 +22,8 @@
     --nav-bg: #ffffff;
     --nav-border: #143622;
     --connector: #2d6a4f;
-    --shadow: 6px 6px 0 rgba(20, 54, 34, 1);
-    --shadow-sm: 4px 4px 0 rgba(20, 54, 34, 1);
+    --shadow: none;
+    --shadow-sm: none;
     --radius: 12px;
     --font: 'Montserrat', sans-serif;
     --font-display: 'Montserrat', sans-serif;
@@ -42,8 +42,20 @@ body.dark {
     --nav-bg: #121212;
     --nav-border: #333333;
     --connector: #52b788;
-    --shadow: 6px 6px 0 rgba(51, 51, 51, 1);
-    --shadow-sm: 4px 4px 0 rgba(51, 51, 51, 1);
+    --shadow: none;
+    --shadow-sm: none;
+}
+
+html.dark-pre {
+    --bg: #000000;
+    --card-bg: #121212;
+    --card-border: #333333;
+    --text: #f5f5f5;
+    --text-muted: #a3a3a3;
+    --yellow: #ffb703;
+    --yellow-light: #33270b;
+    --green: #52b788;
+    --green-light: #1b3a2a;
 }
 
 html {
@@ -88,7 +100,7 @@ body {
     align-items: center;
     gap: 10px;
     font-weight: 800;
-    font-size: 1.05rem;
+    font-size: clamp(0.85rem, 1.5vw, 1.05rem);
     color: var(--text);
     text-decoration: none;
     letter-spacing: -0.3px;
@@ -104,7 +116,7 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: 900;
-    font-size: 0.9rem;
+    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
     flex-shrink: 0;
 }
 
@@ -118,7 +130,7 @@ body {
 .nav-links a {
     display: block;
     padding: 6px 14px;
-    font-size: 0.85rem;
+    font-size: clamp(0.72rem, 1.1vw, 0.85rem);
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -263,7 +275,7 @@ body.dark .nav-links a.active {
     position: absolute;
     top: -14px;
     left: 24px;
-    font-size: 0.75rem;
+    font-size: clamp(0.62rem, 1vw, 0.75rem);
     font-weight: 800;
     letter-spacing: 0.12em;
     padding: 4px 12px;
@@ -320,8 +332,8 @@ body.dark .label-green {
 }
 
 .hero-clean-photo-wrap {
-    width: 220px;
-    height: 220px;
+    width: clamp(120px, 22vw, 220px);
+    height: clamp(120px, 22vw, 220px);
     border-radius: 50%;
     border: 3px solid var(--card-border);
     overflow: hidden;
@@ -355,7 +367,7 @@ body.dark .label-green {
 
 .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(1.6rem, 5vw, 4rem);
     font-weight: 900;
     line-height: 1.1;
     color: var(--text);
@@ -365,7 +377,7 @@ body.dark .label-green {
 
 .hero-subtitle {
     font-family: var(--font-display);
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-size: clamp(0.85rem, 2.5vw, 1.8rem);
     font-weight: 700;
     color: var(--green);
     margin-bottom: 16px;
@@ -378,11 +390,11 @@ body.dark .label-green {
 .hero-roles {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 8px;
     justify-content: center;
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: 0.95rem;
+    font-size: clamp(0.65rem, 1.8vw, 0.95rem);
     margin-bottom: 20px;
     color: var(--text);
 }
@@ -402,7 +414,7 @@ body.dark .label-green {
 }
 
 .hero-desc {
-    font-size: 1.1rem;
+    font-size: clamp(0.85rem, 1.8vw, 1.1rem);
     color: var(--text-muted);
     font-weight: 500;
     margin-bottom: 32px;
@@ -471,7 +483,7 @@ body.dark .label-green {
    ABOUT & GENERAL TEXT
    ============================================================ */
 .section-title {
-    font-size: 1.8rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
     font-weight: 900;
     letter-spacing: -0.03em;
     color: var(--text);
@@ -479,7 +491,7 @@ body.dark .label-green {
 }
 
 .about-text-lead {
-    font-size: 1.2rem;
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem);
     font-weight: 700;
     color: var(--text);
     margin-bottom: 20px;
@@ -487,7 +499,7 @@ body.dark .label-green {
 }
 
 .about-p {
-    font-size: 0.95rem;
+    font-size: clamp(0.82rem, 1.4vw, 0.95rem);
     line-height: 1.75;
     color: var(--text-muted);
     margin-bottom: 14px;
@@ -539,7 +551,7 @@ body.dark .label-green {
 }
 
 .timeline-meta {
-    font-size: 0.72rem;
+    font-size: clamp(0.62rem, 1vw, 0.72rem);
     font-weight: 800;
     letter-spacing: 0.08em;
     color: var(--green);
@@ -552,14 +564,14 @@ body.dark .label-green {
 }
 
 .timeline-company {
-    font-size: 1rem;
+    font-size: clamp(0.85rem, 1.4vw, 1rem);
     font-weight: 800;
     color: var(--text);
     margin-bottom: 4px;
 }
 
 .timeline-role {
-    font-size: 0.85rem;
+    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
     color: var(--text-muted);
     font-weight: 500;
 }
@@ -574,7 +586,7 @@ body.dark .label-green {
 }
 
 .timeline-awards li {
-    font-size: 0.8rem;
+    font-size: clamp(0.7rem, 1.1vw, 0.8rem);
     font-weight: 800;
     border: 2px solid var(--card-border);
     padding: 6px 12px;
@@ -607,7 +619,7 @@ body.dark .label-green {
 }
 
 .internship-meta h4 {
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
     font-weight: 800;
     margin-bottom: 8px;
     color: var(--text);
@@ -616,7 +628,7 @@ body.dark .label-green {
 .internship-meta .text-yellow {
     color: var(--yellow);
     font-weight: 800;
-    font-size: 0.9rem;
+    font-size: clamp(0.78rem, 1.2vw, 0.9rem);
     margin-bottom: 16px;
 }
 
@@ -625,7 +637,7 @@ body.dark .internship-meta .text-yellow {
 }
 
 .project-desc {
-    font-size: 0.95rem;
+    font-size: clamp(0.82rem, 1.4vw, 0.95rem);
     line-height: 1.7;
     color: var(--text-muted);
     font-weight: 500;
@@ -683,7 +695,7 @@ body.dark .internship-meta .text-yellow {
 
 .intern-counter {
     font-family: var(--font-display);
-    font-size: 0.75rem;
+    font-size: clamp(0.65rem, 1vw, 0.75rem);
     font-weight: 800;
     letter-spacing: 0.1em;
     color: var(--text-muted);
@@ -703,7 +715,7 @@ body.dark .internship-meta .text-yellow {
     border-radius: 6px;
     background: var(--card-bg);
     color: var(--text);
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -771,7 +783,7 @@ body.dark .internship-meta .text-yellow {
     border-radius: 6px;
     background: var(--card-bg);
     color: var(--text);
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -788,7 +800,7 @@ body.dark .internship-meta .text-yellow {
 
 .page-nav-counter {
     font-family: var(--font-display);
-    font-size: 0.9rem;
+    font-size: clamp(0.78rem, 1.2vw, 0.9rem);
     font-weight: 800;
     color: var(--text);
 }
@@ -877,7 +889,7 @@ body.dark .internship-meta .text-yellow {
 
 .proj-counter {
     font-family: var(--font-display);
-    font-size: 0.7rem;
+    font-size: clamp(0.62rem, 1vw, 0.7rem);
     font-weight: 800;
     letter-spacing: 0.1em;
     color: var(--text-muted);
@@ -896,7 +908,7 @@ body.dark .internship-meta .text-yellow {
     border-radius: 6px;
     background: var(--card-bg);
     color: var(--text);
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -947,7 +959,7 @@ body.dark .internship-meta .text-yellow {
 
 .tag {
     font-family: var(--font-display);
-    font-size: 0.7rem;
+    font-size: clamp(0.62rem, 1vw, 0.7rem);
     font-weight: 800;
     letter-spacing: 0.06em;
     padding: 4px 10px;
@@ -987,7 +999,7 @@ body.dark .tag {
 }
 
 .project-title {
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
     font-weight: 800;
     color: var(--text);
     margin-bottom: 8px;
@@ -995,7 +1007,7 @@ body.dark .tag {
 }
 
 .project-desc {
-    font-size: 0.85rem;
+    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
     color: var(--text-muted);
     line-height: 1.6;
     font-weight: 500;
@@ -1011,7 +1023,7 @@ body.dark .tag {
 }
 
 .skills-group-title {
-    font-size: 0.8rem;
+    font-size: clamp(0.7rem, 1.1vw, 0.8rem);
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -1045,7 +1057,7 @@ body.dark .tag {
 
 .skill-badge span {
     font-family: var(--font-display);
-    font-size: 0.9rem;
+    font-size: clamp(0.78rem, 1.2vw, 0.9rem);
     font-weight: 800;
     text-transform: uppercase;
     color: var(--text);
@@ -1067,7 +1079,7 @@ body.dark .tag {
     border: 2px solid var(--card-border);
     border-radius: 6px;
     font-family: var(--font-display);
-    font-size: 0.8rem;
+    font-size: clamp(0.7rem, 1.1vw, 0.8rem);
     font-weight: 800;
     padding: 6px 14px;
     letter-spacing: 0.04em;
@@ -1081,7 +1093,7 @@ body.dark .tag {
     border: 2px solid var(--card-border);
     border-radius: 6px;
     font-family: var(--font-display);
-    font-size: 0.8rem;
+    font-size: clamp(0.7rem, 1.1vw, 0.8rem);
     font-weight: 900;
     padding: 6px 14px;
     letter-spacing: 0.04em;
@@ -1101,7 +1113,7 @@ body.dark .tag {
 }
 
 .section-subtitle-text {
-    font-size: 0.95rem;
+    font-size: clamp(0.82rem, 1.4vw, 0.95rem);
     color: var(--text-muted);
     font-weight: 500;
 }
@@ -1110,7 +1122,7 @@ body.dark .tag {
     display: inline-flex;
     align-items: center;
     padding: 10px 18px;
-    font-size: 0.85rem;
+    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
 }
 
 /* Stats grid */
@@ -1134,7 +1146,6 @@ body.dark .tag {
 
 .github-stat-card:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--card-border);
 }
 
 .stat-icon-badge {
@@ -1170,14 +1181,14 @@ body.dark .tag {
 
 .stat-value {
     font-family: var(--font-display);
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
     font-weight: 900;
     color: var(--text);
     line-height: 1.2;
 }
 
 .stat-label {
-    font-size: 0.75rem;
+    font-size: clamp(0.65rem, 1vw, 0.75rem);
     font-weight: 700;
     color: var(--text-muted);
     text-transform: uppercase;
@@ -1203,7 +1214,7 @@ body.dark .tag {
 }
 
 .heatmap-title {
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
     font-weight: 800;
     color: var(--text);
 }
@@ -1212,7 +1223,7 @@ body.dark .tag {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.75rem;
+    font-size: clamp(0.65rem, 1vw, 0.75rem);
     font-weight: 700;
     color: var(--text-muted);
 }
@@ -1254,7 +1265,7 @@ body.dark .legend-cell {
     display: flex;
     padding-left: 32px;
     gap: 0;
-    font-size: 0.7rem;
+    font-size: clamp(0.6rem, 1vw, 0.7rem);
     font-weight: 700;
     color: var(--text-muted);
 }
@@ -1274,7 +1285,7 @@ body.dark .legend-cell {
     flex-direction: column;
     justify-content: space-between;
     height: 108px;
-    font-size: 0.65rem;
+    font-size: clamp(0.58rem, 0.9vw, 0.65rem);
     font-weight: 700;
     color: var(--text-muted);
     width: 26px;
@@ -1358,7 +1369,7 @@ body.dark .lvl-4 {
     margin-top: 14px;
     padding-top: 12px;
     border-top: 1px solid var(--green-light);
-    font-size: 0.75rem;
+    font-size: clamp(0.65rem, 1vw, 0.75rem);
     font-weight: 700;
     color: var(--text-muted);
 }
@@ -1384,7 +1395,6 @@ body.dark .lvl-4 {
 
 .github-repo-card:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--card-border);
     background: var(--bg);
 }
 
@@ -1397,7 +1407,7 @@ body.dark .lvl-4 {
 
 .repo-name {
     font-family: var(--font-display);
-    font-size: 0.95rem;
+    font-size: clamp(0.82rem, 1.4vw, 0.95rem);
     font-weight: 800;
     color: var(--green);
     overflow: hidden;
@@ -1406,7 +1416,7 @@ body.dark .lvl-4 {
 }
 
 .repo-visibility {
-    font-size: 0.65rem;
+    font-size: clamp(0.58rem, 0.9vw, 0.65rem);
     font-weight: 800;
     padding: 2px 8px;
     border-radius: 12px;
@@ -1417,7 +1427,7 @@ body.dark .lvl-4 {
 }
 
 .repo-desc {
-    font-size: 0.82rem;
+    font-size: clamp(0.72rem, 1.2vw, 0.82rem);
     color: var(--text-muted);
     line-height: 1.5;
     margin-bottom: 16px;
@@ -1428,7 +1438,7 @@ body.dark .lvl-4 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.75rem;
+    font-size: clamp(0.65rem, 1vw, 0.75rem);
     font-weight: 700;
     color: var(--text-muted);
 }
@@ -1468,7 +1478,7 @@ body.dark .lvl-4 {
     z-index: 1000;
     background: var(--card-border);
     color: var(--card-bg);
-    font-size: 0.72rem;
+    font-size: clamp(0.62rem, 1vw, 0.72rem);
     font-weight: 700;
     padding: 6px 10px;
     border-radius: 6px;
@@ -1533,7 +1543,7 @@ body.dark .lvl-4 {
 
 .contact-svg-title {
     font-family: var(--font-display);
-    font-size: 2.8rem;
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
     font-weight: 900;
     line-height: 1.1;
     color: var(--text);
@@ -1545,7 +1555,7 @@ body.dark .lvl-4 {
 .contact-svg-sub {
     color: var(--text-muted);
     font-family: var(--font-display);
-    font-size: 0.95rem;
+    font-size: clamp(0.82rem, 1.4vw, 0.95rem);
     font-weight: 700;
     line-height: 1.6;
     position: relative;
@@ -1649,7 +1659,6 @@ body.dark .lvl-4 {
 
 .contact-box:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--card-border);
 }
 
 .contact-badge {
@@ -1660,7 +1669,7 @@ body.dark .lvl-4 {
     border: 2px solid var(--card-border);
     border-radius: 6px;
     font-family: var(--font-display);
-    font-size: 0.75rem;
+    font-size: clamp(0.65rem, 1vw, 0.75rem);
     font-weight: 800;
     padding: 6px 12px;
     letter-spacing: 0.05em;
@@ -1693,7 +1702,7 @@ body.dark .lvl-4 {
     position: relative;
     z-index: 1;
     font-family: var(--font-display);
-    font-size: 1rem;
+    font-size: clamp(0.78rem, 1.4vw, 1rem);
     font-weight: 700;
     color: var(--text);
     overflow-wrap: anywhere;
@@ -1715,7 +1724,7 @@ body.dark .lvl-4 {
 .footer {
     text-align: center;
     padding: 32px;
-    font-size: 0.85rem;
+    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
     font-weight: 600;
     color: var(--text-muted);
     border-top: 2px solid var(--nav-border);
@@ -1755,21 +1764,53 @@ body.dark .lvl-4 {
         padding: 32px 20px;
     }
 
+    .hero-card {
+        padding: 32px 16px;
+    }
+
+    .hero-clean-layout {
+        gap: 20px;
+    }
+
+    .hero-clean-photo-wrap {
+        width: clamp(90px, 28vw, 140px);
+        height: clamp(90px, 28vw, 140px);
+    }
+
+    .hero-title {
+        font-size: clamp(1.4rem, 7vw, 2rem);
+    }
+
+    .hero-subtitle {
+        font-size: clamp(0.75rem, 3.5vw, 1rem);
+        gap: 6px;
+    }
+
+    .hero-roles {
+        font-size: clamp(0.6rem, 2.8vw, 0.8rem);
+        gap: 6px;
+    }
+
+    .hero-desc {
+        font-size: clamp(0.8rem, 3.5vw, 0.95rem);
+        margin-bottom: 24px;
+    }
+
     .nav-links {
         display: none;
     }
 
     .section-title {
-        font-size: 1.5rem;
+        font-size: clamp(1.1rem, 5vw, 1.5rem);
     }
 
     .hero-title {
-        font-size: 2.2rem;
+        font-size: clamp(1.4rem, 7vw, 2.2rem);
     }
 
     .neo-btn {
         padding: 12px 20px;
-        font-size: 0.85rem;
+        font-size: clamp(0.72rem, 3vw, 0.85rem);
     }
 
     .hero-actions {
@@ -1798,11 +1839,11 @@ body.dark .lvl-4 {
         margin-right: 0;
         flex-shrink: 0;
         padding: 6px 10px;
-        font-size: 0.7rem;
+        font-size: clamp(0.62rem, 2.5vw, 0.7rem);
     }
 
     .contact-text {
-        font-size: 0.85rem;
+        font-size: clamp(0.72rem, 3vw, 0.85rem);
         word-break: break-word;
         overflow-wrap: anywhere;
     }
@@ -1854,7 +1895,7 @@ body.dark .lvl-4 {
     border: 2px solid var(--card-border);
     border-radius: 6px;
     font-family: var(--font-display);
-    font-size: 0.8rem;
+    font-size: clamp(0.7rem, 1.1vw, 0.8rem);
     font-weight: 800;
     padding: 6px 14px;
     letter-spacing: 0.04em;
@@ -1867,7 +1908,7 @@ body.dark .lvl-4 {
     border: 2px solid var(--card-border);
     border-radius: 6px;
     font-family: var(--font-display);
-    font-size: 0.8rem;
+    font-size: clamp(0.7rem, 1.1vw, 0.8rem);
     font-weight: 800;
     padding: 6px 14px;
     letter-spacing: 0.04em;
@@ -1884,7 +1925,7 @@ body.dark .lvl-4 {
 
 .cert-tab {
     font-family: var(--font-display);
-    font-size: 0.8rem;
+    font-size: clamp(0.7rem, 1.1vw, 0.8rem);
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -1968,7 +2009,7 @@ body.dark .lvl-4 {
     background: rgba(20, 54, 34, 0.82);
     color: #fff;
     font-family: var(--font-display);
-    font-size: 0.8rem;
+    font-size: clamp(0.7rem, 1.1vw, 0.8rem);
     font-weight: 800;
     letter-spacing: 0.05em;
     text-align: center;
@@ -1984,7 +2025,7 @@ body.dark .lvl-4 {
     border-radius: 8px;
     background: var(--card-bg);
     color: var(--text);
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -2013,7 +2054,7 @@ body.dark .lvl-4 {
 
 .cert-counter {
     font-family: var(--font-display);
-    font-size: 0.75rem;
+    font-size: clamp(0.65rem, 1vw, 0.75rem);
     font-weight: 800;
     letter-spacing: 0.1em;
     color: var(--text-muted);
@@ -2037,4 +2078,119 @@ body.dark .lvl-4 {
 
 .cert-dot.active {
     background: var(--yellow);
+}
+
+/* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+.loader-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--bg);  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    border-radius: 16px;
+    padding: 48px 40px 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-width: 280px;
+    max-width: 340px;
+    width: 90%;
+}
+
+.loader-card-label {
+    position: absolute;
+    top: -14px;
+    left: 24px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 2px solid var(--card-border);
+    text-transform: uppercase;
+    background: var(--yellow);
+    color: #143622;
+}
+
+.loader-photo-wrap {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 2px solid var(--card-border);
+    overflow: hidden;
+    background: var(--yellow);
+    flex-shrink: 0;
+}
+
+.loader-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+
+.loader-name {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    font-weight: 900;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-top: 4px;
+}
+
+.loader-role {
+    font-family: var(--font-display);
+    font-size: clamp(0.65rem, 1vw, 0.75rem);
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: center;
+}
+
+.loader-bar-track {
+    width: 100%;
+    height: 10px;
+    border: 2px solid var(--card-border);
+    border-radius: 6px;
+    background: var(--green-light);
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.loader-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--green);
+    border-radius: 4px;
+    transition: width 0.12s ease;
+}
+
+.loader-status {
+    font-family: var(--font-display);
+    font-size: clamp(0.62rem, 1vw, 0.7rem);
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
 }
