@@ -22,8 +22,8 @@
     --nav-bg: #ffffff;
     --nav-border: #143622;
     --connector: #2d6a4f;
-    --shadow: 6px 6px 0 rgba(20, 54, 34, 1);
-    --shadow-sm: 4px 4px 0 rgba(20, 54, 34, 1);
+    --shadow: none;
+    --shadow-sm: none;
     --radius: 12px;
     --font: 'Montserrat', sans-serif;
     --font-display: 'Montserrat', sans-serif;
@@ -42,8 +42,20 @@ body.dark {
     --nav-bg: #121212;
     --nav-border: #333333;
     --connector: #52b788;
-    --shadow: 6px 6px 0 rgba(51, 51, 51, 1);
-    --shadow-sm: 4px 4px 0 rgba(51, 51, 51, 1);
+    --shadow: none;
+    --shadow-sm: none;
+}
+
+html.dark-pre {
+    --bg: #000000;
+    --card-bg: #121212;
+    --card-border: #333333;
+    --text: #f5f5f5;
+    --text-muted: #a3a3a3;
+    --yellow: #ffb703;
+    --yellow-light: #33270b;
+    --green: #52b788;
+    --green-light: #1b3a2a;
 }
 
 html {
@@ -1134,7 +1146,6 @@ body.dark .tag {
 
 .github-stat-card:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--card-border);
 }
 
 .stat-icon-badge {
@@ -1384,7 +1395,6 @@ body.dark .lvl-4 {
 
 .github-repo-card:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--card-border);
     background: var(--bg);
 }
 
@@ -1649,7 +1659,6 @@ body.dark .lvl-4 {
 
 .contact-box:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--card-border);
 }
 
 .contact-badge {
@@ -2037,4 +2046,119 @@ body.dark .lvl-4 {
 
 .cert-dot.active {
     background: var(--yellow);
+}
+
+/* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+.loader-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--bg);  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    border-radius: 16px;
+    padding: 48px 40px 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-width: 280px;
+    max-width: 340px;
+    width: 90%;
+}
+
+.loader-card-label {
+    position: absolute;
+    top: -14px;
+    left: 24px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 2px solid var(--card-border);
+    text-transform: uppercase;
+    background: var(--yellow);
+    color: #143622;
+}
+
+.loader-photo-wrap {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 2px solid var(--card-border);
+    overflow: hidden;
+    background: var(--yellow);
+    flex-shrink: 0;
+}
+
+.loader-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+
+.loader-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-top: 4px;
+}
+
+.loader-role {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: center;
+}
+
+.loader-bar-track {
+    width: 100%;
+    height: 10px;
+    border: 2px solid var(--card-border);
+    border-radius: 6px;
+    background: var(--green-light);
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.loader-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--green);
+    border-radius: 4px;
+    transition: width 0.12s ease;
+}
+
+.loader-status {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
 }
